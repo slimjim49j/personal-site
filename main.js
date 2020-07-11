@@ -25,10 +25,12 @@ anime({
     ],
 })
 
-const mainCircle = document.querySelector("#main-circle");
 
-mainCircle.addEventListener("mouseenter", () => {
-    anime.remove('#main-circle');
+window.setTimeout(() => {
+    const mainCircle = document.querySelector("#main-circle");
+    
+    mainCircle.addEventListener("mouseenter", () => {
+        anime.remove('#main-circle');
     
     const tl = anime.timeline({ easing: "easeInOutCirc" });
     tl
@@ -53,7 +55,7 @@ mainCircle.addEventListener("mouseenter", () => {
     console.log("heya")
 })
 
-mainCircle.addEventListener("mouseout", () => {
+mainCircle.addEventListener("mouseleave", () => {
     anime.remove('#main-circle');
 
     const tl = anime.timeline({ easing: "easeInOutCirc"});
@@ -81,3 +83,27 @@ mainCircle.addEventListener("mouseout", () => {
 mainCircle.addEventListener("click", () => {
 
 })
+}, 1200)
+
+
+
+
+
+
+
+
+
+
+// projects carousel
+
+const projects = document.querySelector(".project-list").childNodes
+const selectedLi = document.querySelector(".selected-project");
+let selectedIdx = Array.from(projects).indexOf(selectedLi);
+function moveCarousel(direction) {
+    return () => {
+        if (direction === "up") projects.length % (selectedIdx++);
+        else (selectedIdx - 1) >= 0 ? selectedIdx-- : selectedIdx = projects.length-1;
+
+
+    }
+}

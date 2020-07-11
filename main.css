@@ -17,6 +17,18 @@ h1 {
     font-size: 3vmin;
 }
 
+h2 {
+    color: rgba(255, 255, 255, 0.753);
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    padding: 5px 0;
+}
+
+.main-text-container {
+    text-align: center;
+    
+}
+
 #main-circle-container {
     position: absolute;
     top: 50%;
@@ -31,6 +43,7 @@ h1 {
 
 #main-circle {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     
@@ -71,10 +84,9 @@ h1 {
     z-index: -1;
 }
 
-h2 {
+.projects-section h2 {
     color: var(--main-blue);
-    font-family: 'Raleway', sans-serif;
-    font-size: 30px;
+    padding: 0;
 }
 
 .projects-list {
@@ -107,4 +119,94 @@ h2 {
 
 .projects-list p {
     font-size: 20px;
+}
+
+
+/* carousel btn */
+.carousel-btn {
+    background-color: transparent;
+    transition: 0.25s background-color ease-in-out;
+    
+    width: 100%;
+    border: none;
+
+    cursor: pointer;
+}
+
+.carousel-btn:hover {
+    background-color: #243a3da9;
+}
+
+.arrow {
+    background-color: transparent;
+    border: solid white;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.arrow-up {
+    transform: rotate(-135deg) translate(-5px, -5px);
+    -webkit-transform: rotate(-135deg) translate(-5px, -5px);
+}
+
+.arrow-down {
+    transform: rotate(45deg) translate(-5px, -5px);
+    -webkit-transform: rotate(45deg) translate(-5px, -5px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.skills-section {
+    position: absolute;
+    width: 30%;
+    left: -40%
+}
+
+.skills-section li {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    color: var(--main-blue)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.links-section {
+    position: absolute;
+    bottom: -30%;
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    border: 1px solid red;
+}
+
+.links-section i {
+    /* display: inline-block; */
+    width: 35px;
+    text-align: center;
+    height: 35px;
+    background-color: var(--main-blue);
 }
