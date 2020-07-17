@@ -10,53 +10,75 @@ body {
     background: radial-gradient(#041b2a, #000000);
 }
 
+.hidden {
+    display: none;
+}
+
 h1 {
     font-family: 'Raleway', sans-serif;
     color: #ffffffbf;
     transition: color 0.2s ease-in-out;
-    font-size: 3vmin;
+    font-size: 2vw;
 }
 
 h2 {
     color: rgba(255, 255, 255, 0.753);
     font-family: 'Raleway', sans-serif;
-    font-size: 30px;
+    font-size: 1vw;
     padding: 5px 0;
 }
 
-.main-text-container {
-    text-align: center;
-    
-}
 
+/* 
+container width: 40%
+circle width: 30%, floated to the right
+circle needs to be centered so the container needs to be translated: 
+25%/40% = 62.5%
+*/
 #main-circle-container {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-70%) translateY(-50%);
     background-color: transparent;
 
-    width: 30%;
+    width: 50%;
     padding-top: 30%;
+    /* min-width: 762.5px; */
+    /* min-height: 457.5px; */
+    /* border: 1px solid red; */
     margin: 0 auto;
 }
 
-#main-circle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+#main-circle-inner-container {
+    /* display: inline; */
     position: absolute;
+    /* clear: both; */
+    /* overflow: auto; */
     top: 0;
-    left: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#main-circle {
+    /* display: inline-flex; */
+    
+    float: right;
+    shape-outside: border-box circle(70%);
+
+
+    /* position: absolute; */
 
     background-color: transparent;
     
-    border: 2px solid white;
-    border-radius: 50%;
+    width: 60%;
+    height: 100%;
+    /* border: 2px solid white;
+    border-radius: 50%; */
+
+    /* 50% of width of parent container */
+    margin-left: 50%;
     
     cursor: pointer;
     z-index: 1;
@@ -64,10 +86,56 @@ h2 {
     /* box-shadow: 0 30px 2.2px rgba(255, 0, 0, 0.4); */
     /* transform: scale(5); */
     /* scale: 5; */
+    perspective: 1000px;
 }
 
 
 
+.main-text-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
+    border-radius: 50%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+#main-circle.flipped .main-text-container {
+    transform: rotateY(180deg);
+}
+
+.main-circle-front, .main-circle-back {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    
+    text-align: center;
+}
+
+.main-circle-front {
+    
+}
+
+.main-circle-back {
+    transform: rotateY(180deg);
+}
+
+.main-circle-back h2 {
+    font-size: 1.5vw;
+}
+
+.main-circle-back p {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
 
 
 
@@ -77,6 +145,10 @@ h2 {
 
 .projects-section {
     position: absolute;
+    /* x translation in main.js */
+    top: 50%;
+    transform: translateY(-50%);
+    
     width: 50%;
     /* height: 100px; */
     opacity: 0;
@@ -93,6 +165,11 @@ h2 {
     width: 100%;
     border: 1px solid var(--main-blue);
 
+}
+
+.projects-section.minified img,
+.projects-section.minified p {
+    display: none;
 }
 
 .projects-list li {
@@ -169,15 +246,21 @@ h2 {
 
 
 .skills-section {
-    position: absolute;
-    width: 30%;
-    left: -40%
+    /* position: absolute; */
+    /* width: 30%;
+    left: -40% */
+
 }
 
 .skills-section li {
+    text-align: right;
     font-family: 'Raleway', sans-serif;
-    font-size: 15px;
-    color: var(--main-blue)
+    font-size: 1vw;
+    color: var(--main-blue);
+    /* color */
+
+    /* width: 30%; */
+    padding: 1% 0;
 }
 
 
@@ -196,17 +279,40 @@ h2 {
 
 .links-section {
     position: absolute;
-    bottom: -30%;
+    bottom: -22%;
+    width: 100%;
+    height:15%;
+    /* border: 1px solid red; */
+}
+
+.links-section ul {
     display: flex;
     flex-direction: row;
-    width: 500px;
-    border: 1px solid red;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+    height: 100%;
+    min-height: 50px;
+    max-height: 85px;
+}
+
+.linkedin-li {
+    align-self: flex-end;
+}
+
+.links-section li {
+    background-color: var(--main-blue);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
 }
 
 .links-section i {
     /* display: inline-block; */
-    width: 35px;
+    display: block;
     text-align: center;
-    height: 35px;
-    background-color: var(--main-blue);
+    line-height: 1.5;
+    color: #041b2a;
+    /* margin: auto; */
 }

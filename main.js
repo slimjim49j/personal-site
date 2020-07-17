@@ -19,7 +19,7 @@ anime({
         },
         {
             value: 1,
-            duration: 1000,
+            duration: 500,
             easing: 'easeInOutQuad',
         }
     ],
@@ -30,60 +30,64 @@ window.setTimeout(() => {
     const mainCircle = document.querySelector("#main-circle");
     
     mainCircle.addEventListener("mouseenter", () => {
+        if (Array.from(mainCircle.classList).includes("flipped")) return;
         anime.remove('#main-circle');
     
-    const tl = anime.timeline({ easing: "easeInOutCirc" });
-    tl
-    .add({
-        targets: "h1",
-        color: "#45daab",
-        opacity: 1,
-        easing: "easeInOutCirc",
-        duration: 100,
+        const tl = anime.timeline({ easing: "easeInOutCirc" });
+        tl
+        .add({
+            targets: "h1",
+            color: "#45daab",
+            opacity: 1,
+            easing: "easeInOutCirc",
+            duration: 100,
+        })
+        .add({
+            targets: "#main-circle",
+            borderColor: "#47b290",
+            duration: 1000,
+        }, "-=100")
+        .add({
+            targets: ".projects-section",
+            right: "-60%",
+            opacity: 1,
+            duration: 500,
+        }, "-=700")
+        console.log("heya")
     })
-    .add({
-        targets: "#main-circle",
-        borderColor: "#47b290",
-        duration: 1000,
-    }, "-=100")
-    .add({
-        targets: ".projects-section",
-        right: "-60%",
-        opacity: 1,
-        duration: 500,
-    }, "-=700")
-    console.log("heya")
-})
 
-mainCircle.addEventListener("mouseleave", () => {
-    anime.remove('#main-circle');
+    mainCircle.addEventListener("mouseleave", () => {
+        if (Array.from(mainCircle.classList).includes("flipped")) return;
+        anime.remove('#main-circle');
 
-    const tl = anime.timeline({ easing: "easeInOutCirc"});
-    tl
-    .add({
-        targets: "h1",
-        color: "#ffffff",
-        opacity: 0.75,
-        easing: "easeInOutCirc",
-        duration: 100,
+        const tl = anime.timeline({ easing: "easeInOutCirc"});
+        tl
+        .add({
+            targets: "h1",
+            color: "#ffffff",
+            opacity: 0.75,
+            easing: "easeInOutCirc",
+            duration: 100,
+        })
+        .add({
+            targets: "#main-circle",
+            borderColor: "#fff",
+            duration: 1000,
+        }, "-=100")
+        .add({
+            targets: ".projects-section",
+            opacity: 0,
+            // right: "40%",
+            duration: 500,
+        }, "-=700")
     })
-    .add({
-        targets: "#main-circle",
-        borderColor: "#fff",
-        duration: 1000,
-    }, "-=100")
-    .add({
-        targets: ".projects-section",
-        opacity: 0,
-        // right: "40%",
-        duration: 500,
-    }, "-=700")
-})
 
-mainCircle.addEventListener("click", () => {
+    document.querySelector(".main-text-container").addEventListener("click", () => {
+        mainCircle.classList.toggle("flipped");
+    })
 
-})
-}, 1200)
+    document.querySelector(".projects-section");
+}, 600)
 
 
 
@@ -96,14 +100,14 @@ mainCircle.addEventListener("click", () => {
 
 // projects carousel
 
-const projects = document.querySelector(".project-list").childNodes
-const selectedLi = document.querySelector(".selected-project");
-let selectedIdx = Array.from(projects).indexOf(selectedLi);
-function moveCarousel(direction) {
-    return () => {
-        if (direction === "up") projects.length % (selectedIdx++);
-        else (selectedIdx - 1) >= 0 ? selectedIdx-- : selectedIdx = projects.length-1;
+// const projects = document.querySelector(".project-list").childNodes
+// const selectedLi = document.querySelector(".selected-project");
+// let selectedIdx = Array.from(projects).indexOf(selectedLi);
+// function moveCarousel(direction) {
+//     return () => {
+//         if (direction === "up") projects.length % (selectedIdx++);
+//         else (selectedIdx - 1) >= 0 ? selectedIdx-- : selectedIdx = projects.length-1;
 
 
-    }
-}
+//     }
+// }
