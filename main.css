@@ -29,6 +29,15 @@ h2 {
 }
 
 
+
+
+@keyframes fofoo {
+    
+}
+
+
+
+
 /* 
 container width: 40%
 circle width: 30%, floated to the right
@@ -80,7 +89,7 @@ circle needs to be centered so the container needs to be translated:
     /* 50% of width of parent container */
     margin-left: 50%;
     
-    cursor: pointer;
+    /* cursor: pointer; */
     z-index: 1;
     /* transition: border 0.2s ease-in-out, background-color 1s ease-in-out; */
     /* box-shadow: 0 30px 2.2px rgba(255, 0, 0, 0.4); */
@@ -145,46 +154,79 @@ circle needs to be centered so the container needs to be translated:
 
 .projects-section {
     position: absolute;
+    visibility: visible;
     /* x translation in main.js */
     top: 50%;
+    right: -116%;
     transform: translateY(-50%);
     
-    width: 50%;
+    width: 99vw;
+    height: 90vh;
     /* height: 100px; */
     opacity: 0;
     /* right: -30%; */
     z-index: -1;
 }
 
+.projects-header {
+    height: 5%;
+}
+
 .projects-section h2 {
+    display: inline-block;
+    font-size: 1.5vw;
     color: var(--main-blue);
     padding: 0;
 }
 
-.projects-list {
-    width: 100%;
-    border: 1px solid var(--main-blue);
+.projects-exit-btn {
+    float: right;
+    background-color: transparent;
+    color: var(--main-blue);
+    font-size: 1vw;
+    
+    border: none;
 
+    cursor: pointer;
 }
 
-.projects-section.minified img,
-.projects-section.minified p {
-    display: none;
+.projects-list {
+    display: flex;
+    justify-content: space-evenly;
+
+    width: 100%;
+    height: 90%;
+    border: 1px solid var(--main-blue);
 }
 
 .projects-list li {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 20px
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    
+    width: 10%;
+    height: 100%;;
+    border: 1px solid var(--main-blue);
+    transition: width 0.25s ease-in-out;
+}
+
+.projects-list li:hover {
+    width: 30%;
+}
+
+.projects-list li:hover img {
+    /* transform: translateX(0); */
 }
 
 .projects-list img {
-    display: inline-block;
-    width: 50%;
+    display: block;
+    transform: translateX(-50%);
+    margin-left: 50%;
+
+    width: 29vw;
 }
 
 .projects-list h3, .projects-list p {
-    display: inline-block;
     color: var(--main-blue);
     font-family: 'Raleway', sans-serif;
 
@@ -199,8 +241,38 @@ circle needs to be centered so the container needs to be translated:
 }
 
 
+
+.projects-section.minified {
+    width: 50%;
+    height: min-content;
+    right: -60%;
+}
+
+.projects-section.minified .projects-list {
+    display: block;
+}
+
+.projects-section.minified h2 {
+    font-size: initial;
+}
+
+.projects-section.minified .projects-exit-btn,
+.projects-section.minified img,
+.projects-section.minified p {
+    display: none;
+}
+
+.projects-section.minified li {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    border: none;
+}
+
+
 /* carousel btn */
-.carousel-btn {
+/* .carousel-btn {
     background-color: transparent;
     transition: 0.25s background-color ease-in-out;
     
@@ -231,7 +303,7 @@ circle needs to be centered so the container needs to be translated:
 .arrow-down {
     transform: rotate(45deg) translate(-5px, -5px);
     -webkit-transform: rotate(45deg) translate(-5px, -5px);
-}
+} */
 
 
 
