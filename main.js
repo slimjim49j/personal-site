@@ -1,4 +1,5 @@
 import anime from './anime-master/lib/anime.es.js';
+import { removeHash } from "./util.js";
 
 // anime({
 //     targets: 'div.hi',
@@ -10,28 +11,46 @@ import anime from './anime-master/lib/anime.es.js';
 //     duration: 5000,
 // });
 
-const tl = anime.timeline({ easing: "easeInOutCirc" });
-tl
-.add({
-    targets: "#main-circle",
-    scale: [
-        {
-            value: 5,
-            duration: 0,
-        },
-        {
-            value: 1,
-            duration: 500,
-            easing: 'easeInOutQuad',
-        }
-    ],
-})
-.add({
-    targets: ".projects-section",
-    // right: "-60%",
+// const tl = anime.timeline({ easing: "easeInOutCirc" });
+// tl
+// .add({
+//     targets: "#main-circle",
+//     scale: [
+//         {
+//             value: 5,
+//             duration: 0,
+//         },
+//         {
+//             value: 1,
+//             duration: 500,
+//             easing: 'easeInOutQuad',
+//         }
+//     ],
+// })
+// .add({
+//     targets: ".projects-section",
+//     // right: "-60%",
+//     opacity: 1,
+//     duration: 500,
+// })
+
+
+anime({
+    targets: ".skills-section li",
     opacity: 1,
-    duration: 500,
-})
+    duration: 1000,
+    delay: anime.stagger(100),
+    easing: "easeInOutQuad"
+});
+
+anime({
+    targets: ".project h3",
+    opacity: 1,
+    duration: 1500,
+    delay: anime.stagger(500),
+    easing: "easeInOutQuad"
+});
+
 
 
 window.setTimeout(() => {
@@ -43,22 +62,22 @@ window.setTimeout(() => {
         if (Array.from(mainCircle.classList).includes("flipped")) return;
         anime.remove('#main-circle');
     
-        const tl = anime.timeline({ easing: "easeInOutCirc" });
-        tl
-        .add({
-            targets: "h1",
-            color: "#45daab",
-            opacity: 1,
-            easing: "easeInOutCirc",
-            duration: 100,
-        })
-        .add({
-            targets: "#main-circle",
-            borderColor: "#47b290",
-            duration: 1000,
-        }, "-=100")
+        // const tl = anime.timeline({ easing: "easeInOutCirc" });
+        // tl
+        // .add({
+        //     targets: "h1",
+        //     color: "#45daab",
+        //     opacity: 1,
+        //     easing: "easeInOutCirc",
+        //     duration: 100,
+        // })
+        // .add({
+        //     targets: "#main-circle",
+        //     borderColor: "#47b290",
+        //     duration: 1000,
+        // }, "-=100")
         
-        console.log("heya")
+        // console.log("heya")
     })
 
     mainCircle.addEventListener("mouseleave", (e) => {
@@ -67,20 +86,20 @@ window.setTimeout(() => {
         if (document.querySelector("#main-circle-container").style.visibility === "hidden") return;
         anime.remove('#main-circle');
 
-        const tl = anime.timeline({ easing: "easeInOutCirc"});
-        tl
-        .add({
-            targets: "h1",
-            color: "#ffffff",
-            opacity: 0.75,
-            easing: "easeInOutCirc",
-            duration: 100,
-        })
-        .add({
-            targets: "#main-circle",
-            borderColor: "#fff",
-            duration: 1000,
-        }, "-=100")
+        // const tl = anime.timeline({ easing: "easeInOutCirc"});
+        // tl
+        // .add({
+        //     targets: "h1",
+        //     color: "#ffffff",
+        //     opacity: 0.75,
+        //     easing: "easeInOutCirc",
+        //     duration: 100,
+        // })
+        // .add({
+        //     targets: "#main-circle",
+        //     borderColor: "#fff",
+        //     duration: 1000,
+        // }, "-=100")
         // .add({
         //     targets: ".projects-section",
         //     opacity: 0,
@@ -124,6 +143,7 @@ window.setTimeout(() => {
 
     document.querySelector(".projects-exit-btn").addEventListener("click", (e) => {
         e.stopPropagation();
+        removeHash();
         document.getElementById("main-circle-container").style.visibility = "visible";
         projectsSection.classList.add("minified");
     })

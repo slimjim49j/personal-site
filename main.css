@@ -21,6 +21,10 @@ h1 {
     font-size: 2vw;
 }
 
+.main-text-container:hover h1 {
+    color: #45daab;
+}
+
 h2 {
     color: rgba(255, 255, 255, 0.753);
     font-family: 'Raleway', sans-serif;
@@ -30,11 +34,27 @@ h2 {
 
 
 
+@keyframes fly-in {
+    from {
+        transform: scale(5);
+    }
 
-@keyframes fofoo {
-    
+    to {
+        transform: scale(1);
+    }
 }
 
+@keyframes projects-init {
+    from {
+        right: 40%;
+        opacity: 0
+    }
+    
+    to {
+        right: -60%;
+        opacity: 1;
+    }
+}
 
 
 
@@ -96,6 +116,10 @@ circle needs to be centered so the container needs to be translated:
     /* transform: scale(5); */
     /* scale: 5; */
     perspective: 1000px;
+
+    animation-name: fly-in;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
 }
 
 
@@ -106,8 +130,14 @@ circle needs to be centered so the container needs to be translated:
     height: 100%;
     border: 2px solid white;
     border-radius: 50%;
-    transition: transform 0.8s;
+    transition: transform 0.8s, border 0.3s ease-in-out;
     transform-style: preserve-3d;
+
+    cursor: pointer;
+}
+
+.main-text-container:hover {
+    border: 2px solid var(--main-blue);
 }
 
 #main-circle.flipped .main-text-container {
@@ -125,6 +155,7 @@ circle needs to be centered so the container needs to be translated:
     height: 100%;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
+    transform: rotateX(0deg);
     
     text-align: center;
 }
@@ -163,9 +194,10 @@ circle needs to be centered so the container needs to be translated:
     width: 99vw;
     height: 90vh;
     /* height: 100px; */
-    opacity: 0;
     /* right: -30%; */
     z-index: -1;
+
+    transition: right 1s ease-in-out;
 }
 
 .projects-header {
@@ -199,26 +231,44 @@ circle needs to be centered so the container needs to be translated:
     border: 1px solid var(--main-blue);
 }
 
-.projects-list li {
+.projects-list .project {
     position: relative;
     display: inline-block;
     overflow: hidden;
     
-    width: 10%;
+    /* width: 10%; */
     height: 100%;;
     border: 1px solid var(--main-blue);
     transition: width 0.25s ease-in-out;
 }
 
-.projects-list li:hover {
-    width: 30%;
+.projects-list .project:hover {
+    /* width: 30%; */
+}
+
+.project:target {
+    box-shadow: 0 0 15px #3ab48d;
 }
 
 .projects-list li:hover img {
     /* transform: translateX(0); */
 }
 
-.projects-list img {
+.project a {
+    width: 100%;
+    height: 100%;
+    
+    text-decoration: none;
+    color: inherit;
+    cursor: inherit;
+}
+
+.project-content-container {
+    width: 100%;
+    height: 100%;
+}
+
+.project img {
     display: block;
     transform: translateX(-50%);
     margin-left: 50%;
@@ -226,26 +276,36 @@ circle needs to be centered so the container needs to be translated:
     width: 29vw;
 }
 
-.projects-list h3, .projects-list p {
+.project h3, .project p {
     color: var(--main-blue);
     font-family: 'Raleway', sans-serif;
 
 }
 
-.projects-list h3 {
+.project h3 {
+    opacity: 0;
     font-size: 25px;
 }
 
-.projects-list p {
+.project p {
     font-size: 20px;
 }
 
 
 
 .projects-section.minified {
+    opacity: 0;
+    right: -60%;
+    
     width: 50%;
     height: min-content;
-    right: -60%;
+
+    animation-name: projects-init;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+
 }
 
 .projects-section.minified .projects-list {
@@ -258,13 +318,15 @@ circle needs to be centered so the container needs to be translated:
 
 .projects-section.minified .projects-exit-btn,
 .projects-section.minified img,
-.projects-section.minified p {
+.projects-section.minified .project-info {
     display: none;
 }
 
-.projects-section.minified li {
+.projects-section.minified .project {
     display: block;
     box-sizing: border-box;
+    box-shadow: none;
+
     width: 100%;
     padding: 20px;
     border: none;
@@ -329,10 +391,13 @@ circle needs to be centered so the container needs to be translated:
     font-family: 'Raleway', sans-serif;
     font-size: 1vw;
     color: var(--main-blue);
+    opacity: 0;
     /* color */
 
     /* width: 30%; */
     padding: 1% 0;
+
+    cursor: default;
 }
 
 
