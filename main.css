@@ -166,15 +166,21 @@ circle needs to be centered so the container needs to be translated:
 
 .main-circle-back {
     transform: rotateY(180deg);
+    box-sizing: border-box;
+    padding: 10%;
 }
 
 .main-circle-back h2 {
     font-size: 1.5vw;
+    padding-bottom: 3%;
 }
 
 .main-circle-back p {
     font-family: 'Raleway', sans-serif;
     color: white;
+    font-size: 1vw;
+    line-height: 1.2;
+    padding: 10px 0;
 }
 
 
@@ -184,6 +190,9 @@ circle needs to be centered so the container needs to be translated:
 
 
 .projects-section {
+    color: var(--main-blue);
+    font-family: 'Raleway', sans-serif;
+    
     position: absolute;
     visibility: visible;
     /* x translation in main.js */
@@ -201,7 +210,12 @@ circle needs to be centered so the container needs to be translated:
 }
 
 .projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
     height: 5%;
+    padding: 0 3%;
 }
 
 .projects-section h2 {
@@ -228,21 +242,24 @@ circle needs to be centered so the container needs to be translated:
 
     width: 100%;
     height: 90%;
-    border: 1px solid var(--main-blue);
+    /* border: 1px solid var(--main-blue); */
 }
 
-.projects-list .project {
+.project {
     position: relative;
     display: inline-block;
     overflow: hidden;
+    background-color: #001720;
     
-    /* width: 10%; */
+    width: 30%;
     height: 100%;;
-    border: 1px solid var(--main-blue);
-    transition: width 0.25s ease-in-out;
+    border: 1px solid #015c68;
+    transition: width 0.25s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    overflow-y: scroll;
 }
 
-.projects-list .project:hover {
+.project:hover {
     /* width: 30%; */
 }
 
@@ -255,12 +272,8 @@ circle needs to be centered so the container needs to be translated:
 }
 
 .project a {
-    width: 100%;
-    height: 100%;
-    
-    text-decoration: none;
+    /* text-decoration: none; */
     color: inherit;
-    cursor: inherit;
 }
 
 .project-content-container {
@@ -276,19 +289,43 @@ circle needs to be centered so the container needs to be translated:
     width: 29vw;
 }
 
-.project h3, .project p {
-    color: var(--main-blue);
-    font-family: 'Raleway', sans-serif;
-
-}
-
 .project h3 {
     opacity: 0;
     font-size: 25px;
+    padding: 15px 0 15px 5%;
+}
+
+.project-info {
+    /* padding-top: 20px; */
+    box-sizing: border-box;
+    padding: 0 0 0 5%;
+}
+
+.project h4 {
+    font-size: 22px;
+    padding: 15px 0 10px;
 }
 
 .project p {
     font-size: 20px;
+}
+
+.project-info ul {
+    padding-left: 30px;
+}
+
+.project-info li {
+    list-style-type: disc;
+    padding: 7px 0;
+}
+
+.project-links-container {
+    padding-top: 15px;
+}
+
+.project-link {
+    padding-right: 10px;
+    text-decoration: underline;
 }
 
 
@@ -312,8 +349,13 @@ circle needs to be centered so the container needs to be translated:
     display: block;
 }
 
+.projects-section.minified .projects-header {
+    padding: 0;
+}
+
 .projects-section.minified h2 {
     font-size: initial;
+    padding-left: 25px;
 }
 
 .projects-section.minified .projects-exit-btn,
@@ -326,12 +368,44 @@ circle needs to be centered so the container needs to be translated:
     display: block;
     box-sizing: border-box;
     box-shadow: none;
-
+    background-color: transparent;
+    overflow: hidden;
+    
     width: 100%;
-    padding: 20px;
     border: none;
+    transition: background-color 0.3s ease-in-out;
 }
 
+.projects-section.minified .project:hover {
+    background-color: #041b2a;
+}
+
+.projects-section.minified h3 {
+    cursor: pointer;
+    padding: 25px
+}
+
+
+/* scrollbar */
+.project::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    background-color: rgb(70, 70, 70);
+}
+
+.project::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: black;
+}
+
+.project::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rgba(13, 77, 93, 0.8);
+}
 
 /* carousel btn */
 /* .carousel-btn {
