@@ -178,7 +178,8 @@ circle needs to be centered so the container needs to be translated:
 
 .main-circle-back h2 {
     font-size: 1.5vw;
-    padding-bottom: 3%;
+    padding: 3% 0;
+    color: var(--main-blue);
 }
 
 .main-circle-back p {
@@ -186,7 +187,7 @@ circle needs to be centered so the container needs to be translated:
     color: white;
     font-size: 1vw;
     line-height: 1.2;
-    padding: 10px 0;
+    padding-bottom: 10px;
 }
 
 
