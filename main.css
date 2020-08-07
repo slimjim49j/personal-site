@@ -170,6 +170,12 @@ circle needs to be centered so the container needs to be translated:
     padding: 10%;
 }
 
+#profile-pic {
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+}
+
 .main-circle-back h2 {
     font-size: 1.5vw;
     padding-bottom: 3%;
