@@ -15,7 +15,10 @@ body {
 .top-particle {
     position: absolute;
     background-color: rgb(255, 219, 189);
-    box-shadow: 0 -20px 50px rgb(255, 166, 0), 0 -20px 80px rgb(255, 123, 0), 0 -20px 20px rgb(255, 255, 255);
+    box-shadow: 0 -20px 50px rgb(255, 166, 0),
+                0 -20px 80px rgb(255, 123, 0),
+                0 -20px 20px rgb(255, 255, 255);
+                /* 10px 0px 0 rgb(255, 255, 255); */
 
     width: 50px;
     height: 30px;
@@ -26,7 +29,9 @@ body {
 .bottom-particle {
     position: absolute;
     background-color: rgb(255, 219, 189);
-    box-shadow: 0 -20px 50px rgb(255, 166, 0), 0 -20px 80px rgb(255, 123, 0), 0 -20px 20px rgb(255, 255, 255);
+    box-shadow: 0 -20px 50px rgb(255, 166, 0),
+                0 -20px 80px rgb(255, 123, 0),
+                0 -20px 20px rgb(255, 255, 255);  
 
     width: 50px;
     height: 30px;
@@ -40,5 +45,9 @@ body {
 
 
 h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     color: white;
+    transform: rotate(-40deg);
 }
