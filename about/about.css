@@ -1,0 +1,44 @@
+body {
+    background-color: black;
+}
+
+.black-hole {
+    position: relative;
+    transform: rotate(40deg);
+    /* filter:blur(10px); */
+    
+    width: 500px;
+    height: 500px;
+}
+
+
+.top-particle {
+    position: absolute;
+    background-color: rgba(255, 219, 189, 0.301);
+    box-shadow: 0 0 50px rgb(255, 166, 0), 0 0 80px rgb(255, 123, 0), 0 0 20px rgba(255, 255, 255, 0.61);
+
+    width: 10px;
+    height: 10px;
+
+    offset-path: path("M 150 300 A 50 50 0 1 1 550 300 Q 700 300 600 350 Q 350 400 100 350 Q 0 300 150 300 ");
+}
+
+.bottom-particle {
+    position: absolute;
+    background-color: rgba(255, 219, 189, 0.301);
+    box-shadow: 0 0 50px rgb(255, 166, 0), 0 0 80px rgb(255, 123, 0), 0 0 20px rgba(255, 255, 255, 0.61);
+
+    width: 10px;
+    height: 10px;
+
+    offset-path: path("M 550 300 A 50 50 0 1 1 150 300 ");
+}
+
+
+
+
+
+
+h1 {
+    color: white;
+}
