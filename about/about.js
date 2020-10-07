@@ -1,24 +1,11 @@
 const center = document.querySelector(".black-hole");
-for (i = 0; i < 500; i++) {
+for (i = 0; i < 50; i++) {
     const el = document.createElement("DIV");
     el.classList.add("bottom-particle");
-    el.style.offsetAnchor = `${Math.random() * 300}% ${Math.random() * 600}%`;
-    el.style.offsetDistance = `${i * .2}%`;
+    // el.style.offsetAnchor = `${Math.random() * 300}% ${Math.random() * 600}%`;
+    el.style.offsetDistance = `${i * 2}%`;
     center.appendChild(el);
 
-    // el.animate(
-    //     [
-    //         { offsetDistance: `0%`, height: "10px" },
-    //         { height: "10px", offset: 0.4},
-    //         { height: "5px", offset: 0.5},
-    //         { offsetDistance: `100%` }
-    //     ],
-    //     {
-    //         duration: Math.floor(Math.random() * 1000000),
-    //         delay: Math.floor(Math.random() * 1000),
-    //         iterations: Infinity
-    //     }
-    // )
     el.animate(
         [
             { opacity: `0.2` },
@@ -34,26 +21,13 @@ for (i = 0; i < 500; i++) {
 
 
 
-for (i = 0; i < 1000; i++) {
+for (i = 0; i < 100; i++) {
     const el = document.createElement("DIV");
     el.classList.add("top-particle");
-    el.style.offsetAnchor = `${Math.random() * 300}% ${Math.random() * 600}%`;
-    el.style.offsetDistance = `${i * .1}%`;
+    // el.style.offsetAnchor = `${Math.random() * 300}% ${Math.random() * 600}%`;
+    el.style.offsetDistance = `${i * 1}%`;
     center.appendChild(el);
 
-    // el.animate(
-    //     [
-    //         { offsetDistance: `0%`, height: "10px" },
-    //         { height: "10px", offset: 0.4},
-    //         { height: "5px", offset: 0.5},
-    //         { offsetDistance: `100%` }
-    //     ],
-    //     {
-    //         duration: Math.floor(Math.random() * 1000000),
-    //         delay: Math.floor(Math.random() * 1000),
-    //         iterations: Infinity
-    //     }
-    // )
     el.animate(
         [
             { opacity: `0.2` },
@@ -61,7 +35,7 @@ for (i = 0; i < 1000; i++) {
         ],
         {
             duration: 1000,
-            delay: i * 5,
+            delay: i * 10,
             iterations: Infinity,
             direction: 'alternate'
         }

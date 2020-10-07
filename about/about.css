@@ -14,22 +14,22 @@ body {
 
 .top-particle {
     position: absolute;
-    background-color: rgba(255, 219, 189, 0.301);
-    box-shadow: 0 0 50px rgb(255, 166, 0), 0 0 80px rgb(255, 123, 0), 0 0 20px rgba(255, 255, 255, 0.61);
+    background-color: rgb(255, 219, 189);
+    box-shadow: 0 -20px 50px rgb(255, 166, 0), 0 -20px 80px rgb(255, 123, 0), 0 -20px 20px rgb(255, 255, 255);
 
-    width: 10px;
-    height: 10px;
+    width: 50px;
+    height: 30px;
 
     offset-path: path("M 150 300 A 50 50 0 1 1 550 300 Q 700 300 600 350 Q 350 400 100 350 Q 0 300 150 300 ");
 }
 
 .bottom-particle {
     position: absolute;
-    background-color: rgba(255, 219, 189, 0.301);
-    box-shadow: 0 0 50px rgb(255, 166, 0), 0 0 80px rgb(255, 123, 0), 0 0 20px rgba(255, 255, 255, 0.61);
+    background-color: rgb(255, 219, 189);
+    box-shadow: 0 -20px 50px rgb(255, 166, 0), 0 -20px 80px rgb(255, 123, 0), 0 -20px 20px rgb(255, 255, 255);
 
-    width: 10px;
-    height: 10px;
+    width: 50px;
+    height: 30px;
 
     offset-path: path("M 550 300 A 50 50 0 1 1 150 300 ");
 }
