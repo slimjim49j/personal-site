@@ -185,13 +185,12 @@ const blackHoleElements = [];
 function createBlackHole() {
 
     const center = document.querySelector(".black-hole");
-    const circleWidth = document.body.clientWidth * 0.3;
     for (let i = 0; i < 50; i++) {
         const el = document.createElement("DIV");
         el.classList.add("bottom-particle");
         // el.style.offsetAnchor = `${Math.random() * 300}% ${Math.random() * 600}%`;
         el.style.offsetDistance = `${i * 2}%`;
-        el.style.offsetPath = `path("M ${circleWidth} ${circleWidth/2} A 50 50 0 1 1 0 ${circleWidth/2} ")`;
+        calcPath(el);
         center.appendChild(el);
 
         animations.push(el.animate(
@@ -216,7 +215,7 @@ function createBlackHole() {
         // el.style.offsetAnchor = `${Math.random() * 300}% ${Math.random() * 600}%`;
         el.style.offsetDistance = `${i * 1}%`;
         // el.style.offsetPath = `path("M 0 0 A 50 50 0 1 1 400 0 Q 550 0 450 50 Q 199 113 -50 50 Q -150 0 0 0 ")`;
-        el.style.offsetPath = `path("M 0 ${circleWidth / 2} A 50 50 0 1 1 ${circleWidth} ${circleWidth / 2} Q ${circleWidth + 150} ${circleWidth / 2} ${circleWidth + 50} ${circleWidth / 2 + 50} Q ${circleWidth / 2} ${circleWidth / 2 + 113} 0 ${circleWidth / 2 + 50} Q -150 ${circleWidth/2} 0 ${circleWidth/2} ")`;
+        calcPath(el);
         
         center.appendChild(el);
         
@@ -238,14 +237,17 @@ function createBlackHole() {
 
 window.addEventListener('resize', updateBlackHole);
 function updateBlackHole() {
+    blackHoleElements.forEach(el => calcPath(el))
+}
+
+function calcPath(el) {
     const circleWidth = document.body.clientWidth * 0.3;
-    blackHoleElements.forEach(el => {
-        if (el.classList.contains("top-particle")) {
-            el.style.offsetPath = `path("M 0 ${circleWidth / 2} A 50 50 0 1 1 ${circleWidth} ${circleWidth / 2} Q ${circleWidth + 150} ${circleWidth / 2} ${circleWidth + 50} ${circleWidth / 2 + 50} Q ${circleWidth / 2} ${circleWidth / 2 + 113} 0 ${circleWidth / 2 + 50} Q -150 ${circleWidth / 2} 0 ${circleWidth / 2} ")`;
-        } else {
-            el.style.offsetPath = `path("M ${circleWidth} ${circleWidth / 2} A 50 50 0 1 1 0 ${circleWidth / 2} ")`;
-        }
-    })
+
+    if (el.classList.contains("top-particle")) {
+        el.style.offsetPath = `path("M 0 ${circleWidth / 2} A 50 50 0 1 1 ${circleWidth} ${circleWidth / 2} Q ${circleWidth + circleWidth*0.375} ${circleWidth / 2} ${circleWidth + 50} ${circleWidth / 2 + 50} Q ${circleWidth / 2} ${circleWidth / 2 + 113} 0 ${circleWidth / 2 + 50} Q ${-circleWidth*0.375} ${circleWidth / 2} 0 ${circleWidth / 2} ")`;
+    } else {
+        el.style.offsetPath = `path("M ${circleWidth} ${circleWidth / 2} A 50 50 0 1 1 0 ${circleWidth / 2} ")`;
+    }
 }
 
 
