@@ -23,7 +23,7 @@ body {
     width: 50px;
     height: 30px;
 
-    offset-path: path("M 150 300 A 50 50 0 1 1 550 300 Q 700 300 600 350 Q 350 400 100 350 Q 0 300 150 300 ");
+    offset-path: path("M 150 300 A 50 50 0 1 1 550 300 Q 700 300 600 350 Q 349 413 100 350 Q 0 300 150 300 ");
 }
 
 .bottom-particle {
@@ -50,4 +50,9 @@ h1 {
     left: 50%;
     color: white;
     transform: rotate(-40deg);
+}
+
+svg {
+    width: 500px;
+    height: 500px;
 }

@@ -171,3 +171,112 @@ window.setTimeout(() => {
 
 //     }
 // }
+
+
+
+
+
+
+
+
+
+let animations = [];
+const blackHoleElements = [];
+function createBlackHole() {
+
+    const center = document.querySelector(".black-hole");
+    const circleWidth = document.body.clientWidth * 0.3;
+    for (let i = 0; i < 50; i++) {
+        const el = document.createElement("DIV");
+        el.classList.add("bottom-particle");
+        // el.style.offsetAnchor = `${Math.random() * 300}% ${Math.random() * 600}%`;
+        el.style.offsetDistance = `${i * 2}%`;
+        el.style.offsetPath = `path("M ${circleWidth} ${circleWidth/2} A 50 50 0 1 1 0 ${circleWidth/2} ")`;
+        center.appendChild(el);
+
+        animations.push(el.animate(
+            [
+                { opacity: `0.2` },
+                { opacity: `1` }
+            ],
+            {
+                duration: 1000,
+                iterations: Infinity,
+                direction: 'alternate'
+            }
+        ))
+        blackHoleElements.push(el);
+    }
+
+
+
+    for (let i = 0; i < 100; i++) {
+        const el = document.createElement("DIV");
+        el.classList.add("top-particle");
+        // el.style.offsetAnchor = `${Math.random() * 300}% ${Math.random() * 600}%`;
+        el.style.offsetDistance = `${i * 1}%`;
+        // el.style.offsetPath = `path("M 0 0 A 50 50 0 1 1 400 0 Q 550 0 450 50 Q 199 113 -50 50 Q -150 0 0 0 ")`;
+        el.style.offsetPath = `path("M 0 ${circleWidth / 2} A 50 50 0 1 1 ${circleWidth} ${circleWidth / 2} Q ${circleWidth + 150} ${circleWidth / 2} ${circleWidth + 50} ${circleWidth / 2 + 50} Q ${circleWidth / 2} ${circleWidth / 2 + 113} 0 ${circleWidth / 2 + 50} Q -150 ${circleWidth/2} 0 ${circleWidth/2} ")`;
+        
+        center.appendChild(el);
+        
+        animations.push(el.animate(
+            [
+                { opacity: `0.2` },
+                { opacity: `1` }
+                ],
+                {
+                    duration: 1000,
+                    delay: i * 10,
+                    iterations: Infinity,
+                    direction: 'alternate'
+                }
+        ));
+        blackHoleElements.push(el);
+    }
+}
+
+window.addEventListener('resize', updateBlackHole);
+function updateBlackHole() {
+    const circleWidth = document.body.clientWidth * 0.3;
+    blackHoleElements.forEach(el => {
+        if (el.classList.contains("top-particle")) {
+            el.style.offsetPath = `path("M 0 ${circleWidth / 2} A 50 50 0 1 1 ${circleWidth} ${circleWidth / 2} Q ${circleWidth + 150} ${circleWidth / 2} ${circleWidth + 50} ${circleWidth / 2 + 50} Q ${circleWidth / 2} ${circleWidth / 2 + 113} 0 ${circleWidth / 2 + 50} Q -150 ${circleWidth / 2} 0 ${circleWidth / 2} ")`;
+        } else {
+            el.style.offsetPath = `path("M ${circleWidth} ${circleWidth / 2} A 50 50 0 1 1 0 ${circleWidth / 2} ")`;
+        }
+    })
+}
+
+
+
+let root = document.documentElement;
+let blackHoleState = false;
+const blackHoleToggle = document.querySelector(".black-hole-toggle-btn");
+blackHoleToggle.addEventListener("click", e => {
+    if (blackHoleState) {
+        blackHoleElements.forEach(el => el.remove());
+        animations = [];
+        blackHoleToggle.textContent = "ACTIVATE BLACK HOLE";
+        blackHoleState = false;
+    } else {
+        createBlackHole();
+        blackHoleToggle.textContent = "ABORT BLACK HOLE";
+        blackHoleState = true;
+    }
+    document.body.classList.toggle("black-hole-active");
+});
+
+// toggles animation
+// document.querySelector(".animation-toggle-btn").addEventListener("click", e => {
+//     animations.forEach(a => {
+//         if (a.playState === "running") a.pause();
+//         else a.play();
+//     });
+// });
+
+
+root.addEventListener("mousemove", e => {
+    root.style.setProperty('--mouse-x', e.clientX + "px");
+    root.style.setProperty('--mouse-y', e.clientY + "px");
+});

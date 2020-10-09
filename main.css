@@ -1,5 +1,6 @@
 :root {
   --main-blue: #45daab;
+  --black-hole-text: #eea162;
 }
 
 body {
@@ -239,6 +240,7 @@ circle needs to be centered so the container needs to be translated:
     font-size: 1vw;
     
     border: none;
+    outline: none;
 
     cursor: pointer;
 }

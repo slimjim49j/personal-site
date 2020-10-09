@@ -1,0 +1,100 @@
+body {
+    background-color: black;
+}
+
+.black-hole {
+    position: absolute;
+    /* transform: rotate(40deg); */
+    /* filter:blur(10px); */
+    
+    /* width: 500px;
+    height: 500px; */
+}
+
+
+.top-particle {
+    position: absolute;
+    background-color: rgb(255, 219, 189);
+    box-shadow: 0 -20px 50px rgb(255, 166, 0),
+                0 -20px 80px rgb(255, 123, 0),
+                0 -20px 20px rgb(255, 255, 255);
+                /* 10px 0px 0 rgb(255, 255, 255); */
+
+    width: 50px;
+    height: 30px;
+
+    offset-path: path("M 0 0 A 50 50 0 1 1 400 0 Q 550 0 450 50 Q 199 113 -50 50 Q -150 0 0 0 ");
+}
+
+.bottom-particle {
+    position: absolute;
+    background-color: rgb(255, 219, 189);
+    box-shadow: 0 -20px 50px rgb(255, 166, 0),
+                0 -20px 80px rgb(255, 123, 0),
+                0 -20px 20px rgb(255, 255, 255);  
+
+    width: 50px;
+    height: 30px;
+
+    offset-path: path("M 400 0 A 50 50 0 1 1 0 0 ");
+}
+
+
+.black-hole-toggle-btn {
+    position: absolute;
+    background-color: transparent;
+    color: var(--main-blue);
+    font-family: 'Raleway', sans-serif;
+    font-size: 1vw;
+
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border: none;
+    outline: none;
+    margin: 0 auto;
+
+    cursor: pointer;
+}
+
+.black-hole-active .black-hole-toggle-btn {
+    color: var(--black-hole-text);
+}
+
+
+.black-hole-active .main-text-container:hover h1 {
+    color: var(--black-hole-text);
+}
+
+.black-hole-active .main-text-container:hover {
+    border: 2px solid var(--black-hole-text);
+}
+
+.black-hole-active .main-circle-back h2 {
+    color: var(--black-hole-text);
+}
+
+
+
+.black-hole-active .projects-section,
+.black-hole-active .projects-section h2 {
+    color: var(--black-hole-text);
+}
+
+
+
+.black-hole-active .skills-section li {
+    color: var(--black-hole-text);
+}
+
+
+
+.black-hole-active .links-section li {
+    background-color: var(--black-hole-text);
+}
+
+
+.black-hole-active .projects-exit-btn {
+    color: var(--black-hole-text);
+}
