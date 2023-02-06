@@ -58,6 +58,12 @@ body {
     cursor: pointer;
 }
 
+@media screen and (max-width: 600px) {
+    .black-hole-toggle-btn {
+        display: none;
+    }
+}
+
 .black-hole-active {
     animation: shake 0.5s;
 }

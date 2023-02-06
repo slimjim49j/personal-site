@@ -33,6 +33,15 @@ h2 {
     padding: 5px 0;
 }
 
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 7vw;
+    }
+
+    h2 {
+        font-size: 4vw;
+    }
+}
 
 
 @keyframes fly-in {
@@ -80,6 +89,14 @@ circle needs to be centered so the container needs to be translated:
     margin: 0 auto;
 }
 
+@media screen and (max-width: 600px) {
+    #main-circle-container {
+        width: 90%;
+        padding-top: 90%;
+    transform: translateX(-50%) translateY(-50%);
+    }
+}
+
 #main-circle-inner-container {
     /* display: inline; */
     position: absolute;
@@ -124,6 +141,11 @@ circle needs to be centered so the container needs to be translated:
 }
 
 
+@media screen and (max-width: 600px) {
+    #main-circle {
+        width: 100%;
+    }
+}
 
 .main-text-container {
     position: relative;
@@ -191,7 +213,20 @@ circle needs to be centered so the container needs to be translated:
     padding-bottom: 10px;
 }
 
+@media screen and (max-width: 600px) {
+    #profile-pic {
+        height: auto;
+    }
+    
+    .main-circle-back h2 {
+        font-size: 4vw;
+    }
 
+    .main-circle-back p {
+        font-size: 4vw;
+        line-height: 1.2;
+    }
+}
 
 
 
@@ -215,6 +250,12 @@ circle needs to be centered so the container needs to be translated:
     z-index: -1;
 
     transition: right 1s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+    .projects-section {
+        display: none;
+    }
 }
 
 .projects-header {
@@ -482,6 +523,13 @@ circle needs to be centered so the container needs to be translated:
 
     cursor: default;
 }
+
+@media screen and (max-width: 600px) {
+    .skills-section {
+        display: none;
+    }
+}
+
 
 
 
